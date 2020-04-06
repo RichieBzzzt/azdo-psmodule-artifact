@@ -21,7 +21,7 @@ steps:
     &"$(System.DefaultWorkingDirectory)/tests/_InvokeTests.ps1"
   displayName: 'Run Pester Tests'
 
-- task: PublishTestResults
+- task: PublishTestResults@2
   displayName: 'Publish Test Results'
   inputs:
     testResultsFormat: NUnit
