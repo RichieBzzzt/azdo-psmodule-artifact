@@ -2,7 +2,7 @@ try {
     Import-Module Pester -MinimumVersion 4.4.2
 }
 catch {
-    Install-Module Pester -MinimumVersion 4.4.2 -Scope CurrentUser -SkipPublisherCheck
+    Install-Module Pester -MinimumVersion 4.4.2 -Scope CurrentUser -SkipPublisherCheck -Force
 }
 
 Set-Location $PSScriptRoot
