@@ -1,9 +1,9 @@
 [CmdletBinding()]
 param (
-    [string]$packageSourceUrl = 'https://pkgs.dev.azure.com/[orgname]/[randomguid]/_packaging/[feedname]/nuget/v3/index.json',
-    [string]$AzDOArtifactFeedName = '[feedname]',
+    [string]$packageSourceUrl,
+    [string]$AzDOArtifactFeedName = 'artifact',
     [string]$AzDOPat,
-    [string]$ModuleFolderPath = (Join-Path -Path $env:SYSTEM_ARTIFACTSDIRECTORY -ChildPath "[.artifact.alias]\[folder.what.contains.module]")
+    [string]$ModuleFolderPath = (Join-Path -Path $env:SYSTEM_ARTIFACTSDIRECTORY -ChildPath "_RichieBzzzt.azdo_psmodule_artifact\noddyModule")
 )
 
 # Variables
