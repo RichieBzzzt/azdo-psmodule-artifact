@@ -24,7 +24,7 @@ steps:
 - task: PowerShell@2
   inputs:
     targetType: 'filePath'
-    filePath: "$(System.DefaultWorkingDirectory)/noddyModule/updateVersionNumber.ps1"
+    filePath: "$(System.DefaultWorkingDirectory)/updateVersionNumber.ps1"
     displayName: 'Update Module Version Number'
     arguments: "-VersionNumber $(Build.BuildId)"
 
