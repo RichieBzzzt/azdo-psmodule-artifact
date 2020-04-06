@@ -38,7 +38,31 @@ steps:
       failTaskOnFailedTests: true
   condition: succeededOrFailed()
 
-- task: PublishPipelineArtifact@0
+- task: CopyFiles@2
   inputs:
-    artifactName: 'noddyModule'
-    targetPath: '$(Build.ArtifactStagingDirectory)/noddyModule'
+    contents: '**' 
+    targetFolder: "$(Build.ArtifactStagingDirectory)"
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(build.artifactstagingdirectory)\noddyModule'
+  inputs:
+    SourceFolder: noddyModule
+    TargetFolder: '$(build.artifactstagingdirectory)\noddyModule'
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(build.artifactstagingdirectory)\artifact'
+  inputs:
+    SourceFolder: artifact
+    TargetFolder: '$(build.artifactstagingdirectory)\artifact'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: artifact'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)\artifact'
+    ArtifactName: artifact
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: noddyModule'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)\noddyModule'
+    ArtifactName: noddyModule
