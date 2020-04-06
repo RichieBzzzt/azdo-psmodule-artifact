@@ -21,6 +21,11 @@ steps:
     &"$(System.DefaultWorkingDirectory)/tests/_InvokeTests.ps1"
   displayName: 'Run Pester Tests'
 
+- powershell: |
+    &"$(System.DefaultWorkingDirectory)/noddyModule/updateVersionNumber.ps1"
+  displayName: 'Update Module Version Number'
+  arguments: -VersionNumber $(Build.BuildId)
+
 - task: PublishTestResults@2
   displayName: 'Publish Test Results'
   inputs:
@@ -30,3 +35,8 @@ steps:
       searchFolder: '$(Build.ArtifactStagingDirectory)/tests'
       failTaskOnFailedTests: true
   condition: succeededOrFailed()
+
+- task: PublishPipelineArtifact@0
+  inputs:
+    artifactName: 'noddyModule'
+    targetPath: '$(Build.ArtifactStagingDirectory)/noddyModule'
