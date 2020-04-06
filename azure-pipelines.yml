@@ -20,3 +20,13 @@ steps:
 - powershell: |
     &"$(System.DefaultWorkingDirectory)/tests/_InvokeTests.ps1"
   displayName: 'Run Pester Tests'
+
+- task: PublishTestResults
+  displayName: 'Publish Test Results'
+  inputs:
+    testResultsFormat: NUnit
+    testResultsFiles: |
+      **/*test*.xml
+      searchFolder: '$(Build.ArtifactStagingDirectory)/tests'
+      failTaskOnFailedTests: true
+  condition: succeededOrFailed()
