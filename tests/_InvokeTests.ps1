@@ -5,7 +5,6 @@ catch {
     Install-Module Pester -MinimumVersion 4.4.2 -Scope CurrentUser -SkipPublisherCheck
 }
 
-
 Set-Location $PSScriptRoot
 $Edition = $PSVersionTable.PSEdition
 $date = Get-Date -format "yyyy.MM.dd.hh.mm.ss"
